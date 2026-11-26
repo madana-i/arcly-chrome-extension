@@ -1,0 +1,44 @@
+{
+  "manifest_version": 3,
+  "name": "arcly",
+  "version": "0.1.0",
+  "description": "ブックマークとタブをサイドバーで管理し、ショートカットですばやく検索。",
+  "minimum_chrome_version": "116",
+  "permissions": ["sidePanel", "bookmarks", "tabs", "storage", "favicon"],
+  "side_panel": {
+    "default_path": "sidepanel.html"
+  },
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_title": "arclyのサイドバーを開く",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "32": "icons/icon-32.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon-16.png",
+    "32": "icons/icon-32.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  },
+  "commands": {
+    "open-launcher": {
+      "suggested_key": { "default": "Ctrl+K", "mac": "Command+K" },
+      "description": "ブックマークとタブを検索",
+      "global": false
+    },
+    "_execute_action": {
+      "suggested_key": {
+        "default": "Alt+Shift+S"
+      }
+    }
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'; base-uri 'none'; connect-src 'none'; img-src 'self' data: chrome-extension:; style-src 'self' 'unsafe-inline'"
+  },
+  "incognito": "not_allowed"
+}
